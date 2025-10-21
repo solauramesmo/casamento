@@ -22,11 +22,11 @@
                     },
                     colors: {
                         /* Novas cores baseadas na solicitação (Marrom e Off-white) e na textura */
-                        'brown-dark': '#5A4A42', /* Marrom escuro para texto principal */
+                        'brown-dark': '#5e3c11', /* Marrom escuro para texto principal */
                         'brown-accent': '#8A606A', /* Marrom rosado (doce de leite/acento) */
                         'blue-dusty': '#79A6B2', /* Azul empoeirado (acento) */
-                        'off-white': '#F7F3F0', /* Fundo off-white */
-                        'text-contrast': '#382B21' /* Marrom mais escuro para maior contraste */
+                        'off-white': '#f5eedc', /* Fundo off-white */
+                        'text-contrast': '#301f12' /* Marrom mais escuro para maior contraste */
                     }
                 }
             }
@@ -72,18 +72,19 @@
         }
         
         .hero-overlay {
-            background-color: rgba(255, 255, 255, 0.85); /* Fundo quase branco para contraste */
+            background-color: rgba(255, 242, 198, 0.85); /* Fundo quase branco para contraste */
             backdrop-filter: blur(1px);
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         }
 
         .divider-icon {
             display: inline-block;
             margin: 1.5rem 0;
             font-size: 2rem;
-            color: #8A606A; /* Accent color */
+            opacity: 0.3; /* Tornando a textura mais sutil */
+            color: #79A6B2; /* Accent color */
         }
     </style>
 </head>
@@ -125,6 +126,7 @@
         // A função handlePhotoUpload foi removida, pois o botão agora usa um link direto (<a>).
     </script>
  <img src="fundo.png" alt="imagem de fundo do convite">
+ 
     <!-- 1. HEADER SECTION (Hero) -->
     <header class="hero-section">
 
