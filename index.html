@@ -1,306 +1,277 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laura & João Batista - 17.01.2026</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    
-        /* Custom Tailwind Configuration (Optional, but good for custom fonts) */
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Spectral', 'serif'], /* Spectral para corpo do texto */
-                        'display': ['Spectral', 'serif'], /* Spectral para títulos principais */
-                        /* ATUALIZADO: Georgia para os nomes do casal, caindo para serif genérico */
-                        'script': ['Georgia'], 
-                    },
-                    colors: {
-                        /* Novas cores baseadas na solicitação (Marrom e Off-white) e na textura */
-                        'brown-dark': '#5e3c11', /* Marrom escuro para texto principal */
-                        'brown-accent': '#8A606A', /* Marrom rosado (doce de leite/acento) */
-                        'blue-dusty': '#79A6B2', /* Azul empoeirado (acento) */
-                        'off-white': '#f5eedc', /* Fundo off-white */
-                        'text-contrast': '#301f12' /* Marrom mais escuro para maior contraste */
-                    }
-                }
-            }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laura & João Batista - 17.01.2026</title>
 
-        /* Base styling for the Boho look with new colors */
-        body {
-    
-            font-family: 'Spectral', serif; /* Fonte principal alterada para Spectral */
-            color: #41290d; /* Marrom escuro */
-            background-color: #eee4dc; /* Off-white */
-            line-height: 1.7; /* Aumentado para Spectral */
-            
-            
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        .hero-section {
-            /* Imagem do Casal (URL do arquivo enviado) */
-            background-image: ('fundo.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Spectral', 'serif'],
+            display: ['Spectral', 'serif'],
+            script: ['Georgia', 'serif'],
+          },
+          colors: {
+            'brown-dark': '#5e3c11',
+            'brown-accent': '#8A606A',
+            'blue-dusty': '#79A6B2',
+            'off-white': '#f5eedc',
+            'text-contrast': '#301f12'
+          }
         }
+      }
+    }
+  </script>
 
-        /* Seção com Textura como Elemento de Decoração (ATUALIZADA) */
-        .textured-bg {
-            background-image: "fundo.png"; /* Nova textura enviada */
-            background-repeat: repeat;
-            background-size: 200px; /* Tamanho ajustado para ser sutil */
-            opacity: 0.3; /* Tornando a textura mais sutil */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .hero-overlay {
-            background-color: rgba(255, 242, 198, 0.85); /* Fundo quase branco para contraste */
-            backdrop-filter: blur(1px);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        .divider-icon {
-            display: inline-block;
-            margin: 1.5rem 0;
-            font-size: 2rem;
-            opacity: 0.3; /* Tornando a textura mais sutil */
-            color: #79A6B2; /* Accent color */
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Spectral', serif;
+      color: #41290d;
+      background-color: #eee4dc;
+      line-height: 1.7;
+    }
+
+    .hero-section {
+      background-image: url('fundo.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .textured-bg {
+      background-image: url('fundo.png');
+      background-repeat: repeat;
+      background-size: 200px;
+      opacity: 0.3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .hero-overlay {
+      background-color: rgba(255, 242, 198, 0.85);
+      backdrop-filter: blur(1px);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .divider-icon img {
+      display: inline-block;
+      margin: 1.5rem 0;
+      opacity: 0.7;
+      width: 48px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Message Box (Instead of alert()) -->
-    <div id="message-box" class="fixed top-4 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-xl text-white z-50 transition-opacity duration-300 opacity-0 hidden"></div>
+  <!-- Mensagem temporária (substitui alert) -->
+  <div id="message-box"
+       class="fixed top-4 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-xl text-white z-50 transition-opacity duration-300 opacity-0 hidden">
+  </div>
 
-    <script>
-        // Utility function to display a custom message instead of alert()
-        function showMessage(message, type = 'info') {
-            const box = document.getElementById('message-box');
-            box.textContent = message;
+  <script>
+    function showMessage(message, type = 'info') {
+      const box = document.getElementById('message-box');
+      box.textContent = message;
 
-            let bgColor;
-            if (type === 'success') bgColor = 'bg-green-600';
-            else if (type === 'error') bgColor = 'bg-red-600';
-            else bgColor = 'bg-brown-accent'; // Usando nova cor de acento
+      let bgColor;
+      if (type === 'success') bgColor = 'bg-green-600';
+      else if (type === 'error') bgColor = 'bg-red-600';
+      else bgColor = 'bg-brown-accent';
 
-            box.className = `fixed top-4 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-xl text-white z-50 transition-opacity duration-300 ${bgColor} opacity-100 block`;
+      box.className = `fixed top-4 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-xl text-white z-50 transition-opacity duration-300 ${bgColor} opacity-100 block`;
 
-            setTimeout(() => {
-                box.classList.remove('opacity-100');
-                box.classList.add('opacity-0');
-                setTimeout(() => box.classList.add('hidden'), 300);
-            }, 3000);
-        }
+      setTimeout(() => {
+        box.classList.remove('opacity-100');
+        box.classList.add('opacity-0');
+        setTimeout(() => box.classList.add('hidden'), 300);
+      }, 3000);
+    }
 
-        // Action: Opens the Google Forms RSVP link in a new tab
-        function handleRsvp() {
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwpPYxK-2VKcqk5vKP2Dkhmi_PiZTWeD2JLJVPYGdvkdj72Q/viewform?usp=sharing&ouid=114178059191973449779', '_blank');
-        }
+    function handleRsvp() {
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwpPYxK-2VKcqk5vKP2Dkhmi_PiZTWeD2JLJVPYGdvkdj72Q/viewform?usp=sharing', '_blank');
+    }
 
-        // Action: Opens the Gift Registry link in a new tab (UPDATED)
-        function handleGifts() {
-            window.open('https://docs.google.com/document/d/1SnXpX8fL7NjYDYuwbUv20ImT23DhOsct7CnYPUTrlLw/edit?usp=sharing', '_blank');
-        }
-        
-        // A função handlePhotoUpload foi removida, pois o botão agora usa um link direto (<a>).
-    </script>
- <img src="./blob/main/fundo.png" alt="imagem de fundo do convite">
- 
-    <!-- 1. HEADER SECTION (Hero) -->
-    <header class="hero-section">
+    function handleGifts() {
+      window.open('https://docs.google.com/document/d/1SnXpX8fL7NjYDYuwbUv20ImT23DhOsct7CnYPUTrlLw/edit?usp=sharing', '_blank');
+    }
+  </script>
 
-        <div class="hero-overlay max-w-lg mx-auto p-8 md:p-12">
-            <!-- font-script agora usa Georgia -->
-            <h1 class="font-script text-6xl md:text-7xl text-brown-accent leading-none">
-                Laura
-            </h1>
-            <p class="font-display text-4xl md:text-5xl my-2 text-brown-dark ">&amp;</p>
-            <h1 class="font-script text-6xl md:text-7xl text-brown-accent leading-none mb-6">
-                João Batista
-            </h1>
-            <div class="bg-white/70 p-4 rounded-lg shadow-inner">
-                <p class="font-display text-lg md:text-xl font-semibold text-brown-dark tracking-wider uppercase mb-2">
-                    17 de Janeiro de 2026
-                </p>
-                <p class="font-display text-base md:text-lg text-brown-dark/80">
-                    Monte Alegre, Piracicaba - SP
-                </p>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. COUPLE'S MESSAGE (Com Textura Subtil) -->
-    <section class="py-16 md:py-24 bg-off-white relative overflow-hidden">
-        
-        <!-- Aplica a imagem da nova textura como fundo -->
-        <div class="textured-bg opacity-30"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="font-display text-4xl md:text-5xl text-brown-accent mb-6">
-                Bem-vindo ao nosso site!
-            </h2>
-             
-            <div class="divider-icon"><img src="/blob/main/flor.png" alt="flor"></div>
-            <p class="text-lg md:text-xl text-brown-dark mt-4">
-                Estamos muito felizes em compartilhar esse dia tão importante com quem faz parte da nossa história. Sua presença tornará este momento ainda mais especial!
-            </p>
-        </div>
-    </section>
-
-    <!-- 3. RSVP / GUEST CONFIRMATION -->
-    <section class="py-16 bg-white shadow-inner">
-       
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            
-            <h2 class="font-display text-3xl md:text-4xl text-brown-dark mb-6">
-                Confirmação de Presença
-            </h2>
-            <p class="text-brown-dark mb-4 max-w-2xl mx-auto">
-                
-                Para nos ajudar na organização, pedimos a gentileza de confirmar sua presença até o dia 2 de Dezembro de 2025.
-            </p>
-            <!-- Texto de instrução adicionado acima do botão -->
-            <p class="text-base font-semibold text-brown-accent mb-6">
-                Clique no botão para ser redirecionado(a) ao formulário:
-            </p>
-            <!-- Botão com cor de acento marrom-rosado, agora chama a função com o link real -->
-            <button onclick="handleRsvp()"
-                    class="bg-brown-accent hover:bg-brown-dark text-brown font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 uppercase tracking-wider text-lg">
-                Confirmar Sua Presença
-            </button>
-        </div>
-    </section>
-    <img src="./blob/main/fundo.png" alt="imagem de fundo do convite">
-    <!-- NOVO CAMPO: 3.5. PHOTO SHARING / HASHTAG SECTION -->
-    <section class="py-16 md:py-20 bg-off-white relative overflow-hidden border-t border-brown-dark/10">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="font-display text-4xl md:text-5xl text-blue-dusty mb-6">
-                Compartilhe Suas Fotos!
-            </h2>
-            <p class="text-lg md:text-xl text-brown-dark mt-4 mb-6">
-                Talvez você tenha fotos nossas — ou conosco — muito melhores que nossas selfies tremidas. Envie por aqui e ajude a deixar nossa decoração ainda mais especial.
-            </p>
-            
-            <p class="text-brown-dark mt-8 mb-4 max-w-2xl mx-auto">
-                Para nos enviar as fotos em alta resolução ou vídeos que você tiver, acesse nosso álbum compartilhado:
-            </p>
-
-            <!-- Link direto para o Google Drive, estilizado como botão com texto em marrom -->
-            <a href="https://drive.google.com/drive/folders/13spHyaWck3hhB6dXtKtev8PDELA-gJu-?usp=sharing" target="_blank" rel="noopener noreferrer"
-               class="inline-block bg-off-white hover:bg-brown-dark hover:text-white text-brown-dark border border-brown-dark/50 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 ">
-                Enviar Fotos Agora
-            </a>
-        </div>
-        <img src="./blob/main/fundo.png" alt="imagem de fundo do convite">
+  <!-- HEADER / HERO -->
+  <header class="hero-section">
+    <div class="hero-overlay max-w-lg mx-auto p-8 md:p-12">
+      <h1 class="font-script text-6xl md:text-7xl text-brown-accent leading-none">
+        Laura
+      </h1>
+      <p class="font-display text-4xl md:text-5xl my-2 text-brown-dark">&amp;</p>
+      <h1 class="font-script text-6xl md:text-7xl text-brown-accent leading-none mb-6">
+        João Batista
+      </h1>
+      <div class="bg-white/70 p-4 rounded-lg shadow-inner">
+        <p class="font-display text-lg md:text-xl font-semibold text-brown-dark tracking-wider uppercase mb-2">
+          17 de Janeiro de 2026
+        </p>
+        <p class="font-display text-base md:text-lg text-brown-dark/80">
+          Monte Alegre, Piracicaba - SP
+        </p>
+      </div>
     </div>
-    
-    </section>
+  </header>
 
-    <!-- 4. KEY INFORMATION BLOCKS (Atualizado para bg-white para contraste) -->
-    <section class="py-16 md:py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-    
-            <h2 class="font-display text-4xl md:text-5xl text-brown-dark text-center mb-12">
-                Informações
-            </h2>
+  <!-- MENSAGEM DE BOAS-VINDAS -->
+  <section class="py-16 md:py-24 bg-off-white relative overflow-hidden">
+    <div class="textured-bg"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <h2 class="font-display text-4xl md:text-5xl text-brown-accent mb-6">
+        Bem-vindo ao nosso site!
+      </h2>
+      <div class="divider-icon"><img src="flor.png" alt="Flor decorativa"></div>
+      <p class="text-lg md:text-xl text-brown-dark mt-4">
+        Estamos muito felizes em compartilhar esse dia tão importante com quem faz parte da nossa história. 
+        Sua presença tornará este momento ainda mais especial!
+      </p>
+    </div>
+  </section>
 
-            <!-- Layout com 2 colunas no desktop e 1 no mobile -->
-            <div class="grid md:grid-cols-2 gap-8">
-            
-                
-                <!-- Dress Code Card (1/2 coluna) -->
-                <div class="bg-off-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-brown-accent">
-                    <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
-                        Vestimenta
-                    </h3>
-                    <p class="text-brown-dark text-center md:text-left">
-                        Traje Passeio
-                    </p>
-                    <p class="text-brown-dark/60 mt-2 text-center md:text-left">
-                        Elegância sem sofrimento — afinal, é verão em Piracicaba e a pista de dança espera por você!
-                    </p> 
-                </div> 
+  <!-- CONFIRMAÇÃO DE PRESENÇA -->
+  <section class="py-16 bg-white shadow-inner">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-display text-3xl md:text-4xl text-brown-dark mb-6">
+        Confirmação de Presença
+      </h2>
+      <p class="text-brown-dark mb-4 max-w-2xl mx-auto">
+        Para nos ajudar na organização, pedimos a gentileza de confirmar sua presença até o dia 2 de Dezembro de 2025.
+      </p>
+      <p class="text-base font-semibold text-brown-accent mb-6">
+        Clique no botão para ser redirecionado(a) ao formulário:
+      </p>
+      <button onclick="handleRsvp()"
+        class="bg-brown-accent hover:bg-brown-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 uppercase tracking-wider text-lg">
+        Confirmar Sua Presença
+      </button>
+    </div>
+  </section>
 
-                <!-- Gift Registry Card (1/2 coluna) -->
-                <div class="bg-off-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-blue-dusty">
-                    <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
-                        Lista de Presentes
-                    </h3>
-                    <p class="text-brown-dark mb-4 text-center md:text-left">
-                        Sua companhia será nosso maior presente! Caso queira nos presentear com algo mais, temos uma lista virtual com algumas sugestões.
-                    </p>
-                    <!-- O botão agora chama a função handleGifts(), que abre o link fornecido -->
-                    <button onclick="handleGifts()"
-                            class="w-full bg-blue-dusty/70 hover:bg-blue-dusty text-brown font-medium py-2 rounded-lg transition duration-300 shadow-md">
-                        Acessar Lista
-                    </button>
-                </div>
+  <!-- COMPARTILHAR FOTOS -->
+  <section class="py-16 md:py-20 bg-off-white relative overflow-hidden border-t border-brown-dark/10">
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <h2 class="font-display text-4xl md:text-5xl text-blue-dusty mb-6">
+        Compartilhe Suas Fotos!
+      </h2>
+      <p class="text-lg md:text-xl text-brown-dark mt-4 mb-6">
+        Talvez você tenha fotos nossas — ou conosco — muito melhores que nossas selfies tremidas. 
+        Envie por aqui e ajude a deixar nossa decoração ainda mais especial.
+      </p>
+      <p class="text-brown-dark mt-8 mb-4 max-w-2xl mx-auto">
+        Para nos enviar as fotos em alta resolução ou vídeos que você tiver, acesse nosso álbum compartilhado:
+      </p>
+      <a href="https://drive.google.com/drive/folders/13spHyaWck3hhB6dXtKtev8PDELA-gJu-?usp=sharing" target="_blank" rel="noopener noreferrer"
+        class="inline-block bg-off-white hover:bg-brown-dark hover:text-white text-brown-dark border border-brown-dark/50 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+        Enviar Fotos Agora
+      </a>
+    </div>
+  </section>
 
-                <!-- Venue/Schedule Card (Ocupa 2 colunas no desktop) -->
-                
-                <div class="md:col-span-2 bg-off-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-brown-dark">
-                    <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
-                        Local e Horário
-                    </h3>
-                    <ul class="space-y-4 text-brown-dark text-center md:text-left">
-                        <li>
-                            <p class="font-semibold text-lg">Cerimônia</p>
-                            <p>Capela de São Pedro - Monte Alegre</p>
-                            <!-- Endereço da Capela -->
-                            <p class="text-sm text-brown-dark/70">Av. Comendador Pedro Morganti, s/n - Monte Alegre, Piracicaba - SP, 13415-001</p>
-                            <a href="https://maps.app.goo.gl/cMMUiLJhZ7MeZhzg7" target="_blank" rel="noopener noreferrer" class="text-blue-dusty hover:text-brown-accent text-sm underline font-medium">Ver no Mapa</a>
-                        </li>
-                        <li class="pt-2 border-t border-off-white/50">
-                            <p class="font-semibold text-lg">Recepção</p>
-                            <p>Clube dos Funcionários da Caterpillar</p>
-                            <!-- Endereço da Recepção -->
-                            <p class="text-sm text-brown-dark/70">Av. Comendador Leopoldo Dedini, 1171 - Unileste, Piracicaba - SP, 13422-210</p>
-                            <a href="https://maps.app.goo.gl/UqXDXrfn6Nj6my6MA" target="_blank" rel="noopener noreferrer" class="text-blue-dusty hover:text-brown-accent text-sm underline font-medium">Ver no Mapa</a>
-                        </li>
-                        <li class="pt-2 border-t border-off-white/50">
-                            <p class="font-semibold text-lg">Horário</p>
-                            <p>Início da Cerimônia: 15h30</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <img src="./blob/main/fundo.png" alt="imagem de fundo do convite">
+  <!-- INFORMAÇÕES -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-display text-4xl md:text-5xl text-brown-dark text-center mb-12">
+        Informações
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-off-white p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-brown-accent">
+          <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
+            Vestimenta
+          </h3>
+          <p class="text-brown-dark text-center md:text-left">
+            Traje Passeio
+          </p>
+          <p class="text-brown-dark/60 mt-2 text-center md:text-left">
+            Elegância sem sofrimento — afinal, é verão em Piracicaba e a pista de dança espera por você!
+          </p>
         </div>
-    </section>
-    
-    <!-- 5. FOOTER -->
-    <footer class="bg-brown-dark text-center py-10">
-        <div class="max-w-4xl mx-auto px-6">
-            <!-- font-script agora usa Georgia -->
-            <h3 class="font-script text-4xl text-off-white mb-4">
-                Nos vemos em breve!
-            </h3>
-            <p class="text-off-white/80 text-sm">
-                Laura & João Batista • 17.01.2026
-            </p>
+
+        <div class="bg-off-white p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-blue-dusty">
+          <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
+            Lista de Presentes
+          </h3>
+          <p class="text-brown-dark mb-4 text-center md:text-left">
+            Sua companhia será nosso maior presente! Caso queira nos presentear com algo mais, temos uma lista virtual com algumas sugestões.
+          </p>
+          <button onclick="handleGifts()"
+            class="w-full bg-blue-dusty/70 hover:bg-blue-dusty text-brown font-medium py-2 rounded-lg transition duration-300 shadow-md">
+            Acessar Lista
+          </button>
         </div>
-    </footer>
+
+        <div class="md:col-span-2 bg-off-white p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-brown-dark">
+          <h3 class="font-display text-2xl text-brown-dark mb-3 text-center md:text-left">
+            Local e Horário
+          </h3>
+          <ul class="space-y-4 text-brown-dark text-center md:text-left">
+            <li>
+              <p class="font-semibold text-lg">Cerimônia</p>
+              <p>Capela de São Pedro - Monte Alegre</p>
+              <p class="text-sm text-brown-dark/70">
+                Av. Comendador Pedro Morganti, s/n - Monte Alegre, Piracicaba - SP, 13415-001
+              </p>
+              <a href="https://maps.app.goo.gl/cMMUiLJhZ7MeZhzg7" target="_blank" class="text-blue-dusty hover:text-brown-accent text-sm underline font-medium">
+                Ver no Mapa
+              </a>
+            </li>
+            <li class="pt-2 border-t border-off-white/50">
+              <p class="font-semibold text-lg">Recepção</p>
+              <p>Clube dos Funcionários da Caterpillar</p>
+              <p class="text-sm text-brown-dark/70">
+                Av. Comendador Leopoldo Dedini, 1171 - Unileste, Piracicaba - SP, 13422-210
+              </p>
+              <a href="https://maps.app.goo.gl/UqXDXrfn6Nj6my6MA" target="_blank" class="text-blue-dusty hover:text-brown-accent text-sm underline font-medium">
+                Ver no Mapa
+              </a>
+            </li>
+            <li class="pt-2 border-t border-off-white/50">
+              <p class="font-semibold text-lg">Horário</p>
+              <p>Início da Cerimônia: 15h30</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-brown-dark text-center py-10">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="font-script text-4xl text-off-white mb-4">
+        Nos vemos em breve!
+      </h3>
+      <p class="text-off-white/80 text-sm">
+        Laura & João Batista • 17.01.2026
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
-
-
